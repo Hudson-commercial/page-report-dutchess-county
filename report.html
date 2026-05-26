@@ -1,0 +1,288 @@
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Property Report</title>
+      <style>
+         /* --- General styles for both screen and print --- */
+         body {
+         font-family: sans-serif;
+         margin: 0;
+         padding: 0;
+         background-color: #f4f4f4; /* Gray background for web view */
+         color: #333;
+         }
+         .page-container {
+         width: 8.5in; /* Standard paper width */
+         height: 11in; /* Standard paper height */
+         margin: 1cm auto; /* Center page on screen, add some margin */
+         background: white;
+         box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); /* Shadow for screen view */
+         padding: 0.5in; /* Inner padding for content */
+         box-sizing: border-box;
+         /* Flexbox for layout */
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         }
+         h1, h2, h3 {
+         color: #000;
+         }
+         .property-image {
+         width: 100%;
+         height: 400px; object-fit: cover;
+         margin-bottom: 19px;
+         }
+         .details-grid {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 10px;
+         margin-bottom: 20px;
+         }
+         .footer {
+         text-align: center;
+         font-size: 0.8em;
+         color: #666;
+         margin-top: 20px;
+         }
+         /* --- Print-specific styles using @media print --- */
+         @media print {
+         body {
+         background-color: #fff;
+         }
+         .page-container {
+         width: 8.5in;
+         height: 11in;
+         margin: 0;
+         box-shadow: none;
+         padding: 0.5in;
+         }
+         /* Ensure all elements are visible and flow naturally */
+         .footer {
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         padding: 10px;
+         background: white;
+         }
+         /* Forcing content into a single page is difficult in HTML,
+         but setting fixed height and avoiding page breaks helps */
+         .content {
+         height: calc(100% - 1in - 50px); /* Adjust height for content area */
+         overflow: hidden; /* Hide overflowing content if it exceeds the page */
+         }
+         }
+         body {
+         margin: 0; /* Ensure no default body margin pushes the container down or right */
+         padding: 0;
+         height: 100vh; /* Ensures the container positions relative to the full viewport height */
+         }
+         .top-right-container {
+         position: fixed; /* Positions the container relative to the browser window */
+         top: 43px; /* Distance from the top edge */
+         right: 10px; /* Distance from the right edge */
+         }
+         .top-right-container-2 {position: fixed; top: 110px;  right: 10px; }
+         .top-right-container , .top-right-container-2 {  display: flex; /* Aligns the input and button horizontally */
+         align-items: center; /* Vertically centers the items within the container */
+         gap: 5px; /* Adds a small gap between the input and button */
+         background-color: #f0f0f0; /* Light background for the box */
+         padding: 5px;
+         border-radius: 5px; /* Rounds the corners of the container */
+         box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds a subtle shadow */
+         }
+         #addAnotherPropertyTextBox {
+         padding: 5px;
+         font-size: 14px;
+         border: 1px solid #ccc;
+         border-radius: 3px;
+         width: 120px; /* Small fixed width for the text box */
+         }
+         #addAnotherPropertyTextBox-2 {    padding: 5px;
+         font-size: 14px;
+         border: 1px solid #ccc;
+         border-radius: 3px;
+         width: 120px; /* Small fixed width for the text box */}
+         #addProperty , #addProperty-2 {
+         padding: 5px 10px;
+         font-size: 14px;
+         background-color: #007bff; /* A cool blue background */
+         color: white; /* White text */
+         border: none;
+         border-radius: 3px;
+         cursor: pointer; /* Changes cursor to pointer on hover */
+         transition: background-color 0.3s; /* Smooth transition for hover effect */
+         }
+         #addProperty:hover {
+         background-color: #0056b3; /* Darker blue on hover */
+         }
+      </style>
+   </head>
+   <body>
+      <div class="page-container page-container-1 page-div" id="page-container">
+         <div class="header">
+            <h1>Property Report: <span class="property-name"></span></h1>
+            <p><strong>Date:</strong> <span id="todayDateParagraph">May 26, 2026</span> </p>
+         </div>
+         <div class="content">
+            <img src="https://ahprd1cdn.csgpimgs.com/i2/NuUvurIJ-VdqM_gkvAG-KY5hFElKwYYz94vBrfq9hys/116/image.jpg" alt="Property Image" class="property-image">
+            <h2>Property Details</h2>
+            <div class="details-grid">
+               <div>
+                  <p class="price">Price: 1.24</p>
+                  <p class="celling-height">Celling Height 20'</p>
+                  <p class="docks">Docks: 4 ext</p>
+               </div>
+               <div>
+                  <p class="area">Sq. Ft.: 17,000 SF</p>
+                  <p class="year-built">Year Built: 1968</p>
+                  <p class="property-class">Type: 210-211</p>
+               </div>
+            </div>
+            <h2>Description</h2>
+            <p class="description">The property is , a 210-211 building located in St undefined. The buildings location is  Warehouse - Fishkill Submarket. This is a 210-211 building that sits on a SF RBA AC Lot and was built in AC Lot. What is available to lease at this location is 17,000 SF. The max amount of space you can lease here would be 17,000 SF. The onwers are asking for rent $1.24 - 2.25 per sq. ft.</p>
+         </div>
+         <div class="footer">
+            <p>For more information, contact Hudson Commercial Real Estate Corp. at 845 454-1444 or visit our website.</p>
+         </div>
+      </div>
+      <div class="page-container page-container-1 page-div" id="page-div-1">
+         <div class="header">
+            <h1>Property Report: <span class="property-name">59-71 Page Park Dr</span></h1>
+            <p><strong>Date:</strong> <span>May 26, 2026</span> </p>
+         </div>
+         <div class="content">
+            <img src="https://ahprd1cdn.csgpimgs.com/i2/sRUMAVTJGWnsOvuWjMdIC75r_i6dR8Ukw2QbmXzZLYM/116/image.jpg" alt="Property Image" class="property-image">
+            <h2>Property Details</h2>
+            <div class="details-grid">
+               <div>
+                  <p class="price"><strong>Price</strong> 1.33</p>
+                  <p class="celling-height"><strong>Celling Height </strong> 16'</p>
+                  <p class="docks"><strong>Docks</strong> 6,236 SF</p>
+               </div>
+               <div>
+                  <p class="area"><strong> Area </strong> 2 ext</p>
+                  <p class="year-built"><strong>Year Built</strong> 1962</p>
+                  <p class="property-class"><strong>Type</strong> Warehouse</p>
+               </div>
+            </div>
+            <h2>Description</h2>
+            <p class="description">The property is 59-71 Page Park Dr, a Warehouse building located in Fishkill Submarket. The buildings location is 59-71 Page Park Dr Poughkeepsie, NY 12603. This is a Warehouse building that sits on a 2.2 AC Lot and was built in 1962. What is available to lease at this location is 6,236 SF. The max amount of space you can lease here would be 6,236 SF. The onwers are asking for rent $1.33 per sq. ft.</p>
+         </div>
+         <div class="footer">
+            <p>For more information, contact Hudson Commercial Real Estate Corp. at 845 454-1444 or visit our website.</p>
+         </div>
+      </div>
+      <div class="page-container page-container-1 page-div" id="page-div-2">
+         <div class="header">
+            <h1>Property Report: <span class="property-name">141 Daley Rd</span></h1>
+            <p><strong>Date:</strong> <span>May 26, 2026</span> </p>
+         </div>
+         <div class="content">
+            <img src="https://ahprd1cdn.csgpimgs.com/i2/v_Cjs3R5kFL1kP55_XYhRzx1KPRqh-X9a6ufdOJ5GX0/116/image.jpg" alt="Property Image" class="property-image">
+            <h2>Property Details</h2>
+            <div class="details-grid">
+               <div>
+                  <p class="price"><strong>Price</strong> </p>
+                  <p class="celling-height"><strong>Celling Height </strong> 141 Daley Rd</p>
+                  <p class="docks"><strong>Docks</strong> 141 Daley Rd</p>
+               </div>
+               <div>
+                  <p class="area"><strong> Area </strong> 141 Daley Rd</p>
+                  <p class="year-built"><strong>Year Built</strong> 1980</p>
+                  <p class="property-class"><strong>Type</strong> Warehouse</p>
+               </div>
+            </div>
+            <h2>Description</h2>
+            <p class="description">The property is 141 Daley Rd, a Warehouse building located in Fishkill Submarket. The buildings location is 141 Daley Rd Poughkeepsie, NY 12603. This is a Warehouse building that sits on a 1.35 AC Lot and was built in 1980. What is available to lease at this location is 141 Daley Rd. The max amount of space you can lease here would be 141 Daley Rd. The onwers are asking for rent 141 Daley Rd per sq. ft.</p>
+         </div>
+         <div class="footer">
+            <p>For more information, contact Hudson Commercial Real Estate Corp. at 845 454-1444 or visit our website.</p>
+         </div>
+      </div>
+      <div class="page-container page-container-1 page-div" id="page-div-3">
+         <div class="header">
+            <h1>Property Report: <span class="property-name">641 Sheafe Rd</span></h1>
+            <p><strong>Date:</strong> <span>May 26, 2026</span> </p>
+         </div>
+         <div class="content">
+            <img src="https://ahprd1cdn.csgpimgs.com/i2/ZqhGUkuxzmQEkLInpJs2rgpmDDu73T2DAAThCFLs9tw/116/image.jpg" alt="Property Image" class="property-image">
+            <h2>Property Details</h2>
+            <div class="details-grid">
+               <div>
+                  <p class="price"><strong>Price</strong> Withheld</p>
+                  <p class="celling-height"><strong>Celling Height </strong> 641 Sheafe Rd</p>
+                  <p class="docks"><strong>Docks</strong> 2,500 SF</p>
+               </div>
+               <div>
+                  <p class="area"><strong> Area </strong> 4 ext</p>
+                  <p class="year-built"><strong>Year Built</strong> 1980</p>
+                  <p class="property-class"><strong>Type</strong> Warehouse</p>
+               </div>
+            </div>
+            <h2>Description</h2>
+            <p class="description">The property is 641 Sheafe Rd, a Warehouse building located in Fishkill Submarket. The buildings location is 641 Sheafe Rd Poughkeepsie, NY 12601. This is a Warehouse building that sits on a 5.44 AC Lot and was built in 1980. What is available to lease at this location is 2,500 SF. The max amount of space you can lease here would be 2,500 SF. The onwers are asking for rent Withheld - CoStar Est. Rent $1 (Industrial) per sq. ft.</p>
+         </div>
+         <div class="footer">
+            <p>For more information, contact Hudson Commercial Real Estate Corp. at 845 454-1444 or visit our website.</p>
+         </div>
+      </div>
+      <div class="page-container page-container-1 page-div" id="page-div-4">
+         <div class="header">
+            <h1>Property Report: <span class="property-name">199 West Rd - Hudson Valley Business Center</span></h1>
+            <p><strong>Date:</strong> <span>May 26, 2026</span> </p>
+         </div>
+         <div class="content">
+            <img src="https://ahprd1cdn.csgpimgs.com/i2/rIwuqyXby-SIJmEpJfGdt4RLEw8y11_Y4O1RfsCxRZM/116/image.jpg" alt="Property Image" class="property-image">
+            <h2>Property Details</h2>
+            <div class="details-grid">
+               <div>
+                  <p class="price"><strong>Price</strong> 1.67</p>
+                  <p class="celling-height"><strong>Celling Height </strong> 199 West Rd - Hudson Valley Business Center</p>
+                  <p class="docks"><strong>Docks</strong> 10,000 SF</p>
+               </div>
+               <div>
+                  <p class="area"><strong> Area </strong> 1 ext</p>
+                  <p class="year-built"><strong>Year Built</strong> 5,000 - 10,000</p>
+                  <p class="property-class"><strong>Type</strong> Warehouse</p>
+               </div>
+            </div>
+            <h2>Description</h2>
+            <p class="description">The property is 199 West Rd - Hudson Valley Business Center, a Warehouse building located in Fishkill Submarket. The buildings location is 199 West Rd - Hudson Valley Business Center Pleasant Valley, NY 12569. This is a Warehouse building that sits on a 4.99 AC Lot and was built in 1979 / 2007. What is available to lease at this location is 10,000 SF. The max amount of space you can lease here would be 10,000 SF. The onwers are asking for rent $1.67 per sq. ft.</p>
+         </div>
+         <div class="footer">
+            <p>For more information, contact Hudson Commercial Real Estate Corp. at 845 454-1444 or visit our website.</p>
+         </div>
+      </div>
+      <div class="page-container page-container-1 page-div" id="page-div-5">
+         <div class="header">
+            <h1>Property Report: <span class="property-name">188 Smith St</span></h1>
+            <p><strong>Date:</strong> <span>May 26, 2026</span> </p>
+         </div>
+         <div class="content">
+            <img src="https://ahprd1cdn.csgpimgs.com/i2/ZIwTBERGWwepySC6AuTWBY2Ad0F1JDrnmL4-8EE7mVM/116/image.jpg" alt="Property Image" class="property-image">
+            <h2>Property Details</h2>
+            <div class="details-grid">
+               <div>
+                  <p class="price"><strong>Price</strong> 1.92</p>
+                  <p class="celling-height"><strong>Celling Height </strong> 20'</p>
+                  <p class="docks"><strong>Docks</strong> 5,166 SF</p>
+               </div>
+               <div>
+                  <p class="area"><strong> Area </strong> None</p>
+                  <p class="year-built"><strong>Year Built</strong> 1910</p>
+                  <p class="property-class"><strong>Type</strong> Service</p>
+               </div>
+            </div>
+            <h2>Description</h2>
+            <p class="description">The property is 188 Smith St, a Service building located in Fishkill Submarket. The buildings location is 188 Smith St Poughkeepsie, NY 12601. This is a Service building that sits on a 0.57 AC Lot and was built in 1910. What is available to lease at this location is 5,166 SF. The max amount of space you can lease here would be 5,166 SF. The onwers are asking for rent $1.92 per sq. ft.</p>
+         </div>
+         <div class="footer">
+            <p>For more information, contact Hudson Commercial Real Estate Corp. at 845 454-1444 or visit our website.</p>
+         </div>
+      </div>
+      <script src="jquery.min.js"></script> <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+      <script type="text/javascript"></script>
+   </body>
+</html>
